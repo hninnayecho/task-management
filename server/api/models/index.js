@@ -36,14 +36,15 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 // using force update
-/*sequelize.sync({ force: true }).then(function() {
-  db.Role.create({ name: 'organization_owner' });
-  db.Role.create({ name: 'project_owner' });
-  db.Status.create({ name: 'Working on it' });
-  db.Status.create({ name: 'Not Started'});
-  db.Status.create({ name: 'Pending' });
-  db.Status.create({ name: 'Finished' });
-});*/
+sequelize.sync({ force: true }).then(function() {
+
+  db.Task.create({
+    name : 'Task 1', dueDate: new Date(), label: 'Pending'
+  })
+  db.Task.create({
+    name : 'Task 2', dueDate: new Date(), label: 'Finished'
+  })
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
