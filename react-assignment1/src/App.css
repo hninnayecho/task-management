@@ -1,0 +1,14 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+padding: 15px;
+border-bottom: 1px solid #ddd;
+}
+
+.task-form {
+  width: 250px;
+  margin: 0 auto;
+}
+
