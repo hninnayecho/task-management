@@ -21,29 +21,22 @@ var db = {};
 
 fs
   .readdirSync(__dirname)
-  .filter(function(file) {
+  .filter(function (file) {
     return file.indexOf('.') !== 0 && file !== 'index.js';
   })
-  .forEach(function(file) {
+  .forEach(function (file) {
     var model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 
-Object.keys(db).forEach(function(modelName) {
+Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db);
   }
 });
 
 // using force update
-sequelize.sync({ force: true }).then(function() {
-
-  db.Task.create({
-    name : 'Task 1', dueDate: new Date(), label: 'Pending'
-  })
-  db.Task.create({
-    name : 'Task 2', dueDate: new Date(), label: 'Finished'
-  })
+sequelize.sync({ force: false }).then(function () {
 });
 
 db.sequelize = sequelize;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import './App.css';
 import TaskView from './TaskView';
 import AddTask from './AddTask';
@@ -13,6 +14,7 @@ class App extends Component {
       ]
     };
     this.addTaskToList = this.addTaskToList.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -26,13 +28,34 @@ class App extends Component {
     });
   }
 
+  handleSubmit(task) {
+    var self = this;
+    var url = '/addTasks';
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ name: task.name, dueDate: task.dueDate, label: task.label }),
+      dataType: 'json',
+      url: url,
+      success: function (json) {
+        console.log("Save Success");
+        self.setState({ tasks: json });
+      },
+      error: function (e) {
+        console.error('/addTasks', e.toString());
+      }
+    });
+  }
+
   addTaskToList(task) {
+    console.log(task);
+    var self = this;
     var ts = Date.now();
     var newTask = {};
     newTask['task' + ts] = task;
     var currentTasks = { ...this.state.tasks };
     var newTasks = Object.assign(currentTasks, newTask);
-    this.setState({ tasks: newTasks });
+    self.setState({ tasks: newTasks });
   }
 
   renderTasks() {
@@ -45,7 +68,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <AddTask addTask={this.addTaskToList} />
+
+        <AddTask addTask={this.handleSubmit} />
         <table>
           <tr>
             <td>Name</td>
