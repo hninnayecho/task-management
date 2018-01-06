@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'react-select/dist/react-select.css';
 import './App.css';
 class AddTask extends Component {
 
@@ -39,7 +38,7 @@ class AddTask extends Component {
 
                 <input ref={(input) => this.dueDate = input} type="text" placeholder="DueDate" />
                 <div>
-                    <select value={this.state.value} onChange={this.handleChange}>
+                    <select className = "selectLabel" value={this.state.value} onChange={this.handleChange}>
                         <option value="Pending">Penidng</option>
                         <option value="Finished">Finished</option>
                         <option value="InProgress">InProgress</option>

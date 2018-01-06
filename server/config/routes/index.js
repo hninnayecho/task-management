@@ -15,7 +15,22 @@ router.get('/tasks', function (req, res, next) {
   });
 })
 
+router.post("/updateLabel", function (req, res, next) {
+  models.Task
+    .update({
+      name: req.body.name,
+      dueDate: req.body.dueDate,
+      label: req.body.label,
+    },
+    {
+      where: { id: req.body.id }
+    }).then(function () {
+      res.redirect("/tasks");
+    }).catch(function (err) {
+      res.json([]);
+    });
 
+});
 
 router.post("/addTasks", function (req, res, next) {
   models.Task

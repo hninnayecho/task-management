@@ -3,12 +3,17 @@ table {
   width: 100%;
 }
 td, th {
-padding: 15px;
+padding: 5px;
 border-bottom: 1px solid #ddd;
 }
 
-input,select {
+input{
   height: 20px;
+}
+
+.selectLabel {
+  height: 30px;
+  width: 173px;
 }
 
 
