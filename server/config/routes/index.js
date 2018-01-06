@@ -25,7 +25,11 @@ router.post("/updateLabel", function (req, res, next) {
     {
       where: { id: req.body.id }
     }).then(function () {
-      res.redirect("/tasks");
+      models.Task.findAll().then(function (tasks) {
+        res.json(tasks);
+      }).catch(function (err) {
+        res.json([]);
+      });
     }).catch(function (err) {
       res.json([]);
     });

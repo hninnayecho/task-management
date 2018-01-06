@@ -10,11 +10,11 @@ class App extends Component {
     super();
     this.state = {
       tasks: [
-
       ]
     };
     this.addTaskToList = this.addTaskToList.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateTask = this.updateTask.bind(this);
   }
 
   componentDidMount() {
@@ -65,6 +65,26 @@ class App extends Component {
     ))
   }
 
+  updateTask(task) {
+    var self = this;
+    var url = '/updateLabel';
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ name: task.name, dueDate: task.dueDate, label: task.label, id: task.id }),
+      dataType: 'json',
+      url: url,
+      success: function (json) {
+        console.log("Update Success");
+        self.setState({ tasks: json });
+      },
+      error: function (e) {
+        console.error('/addTasks', e.toString());
+      }
+    });
+
+  }
+
   render() {
     return (
       <div>
@@ -79,7 +99,7 @@ class App extends Component {
           {
             Object
               .keys(this.state.tasks)
-              .map(key => <TaskView key={key} task={this.state.tasks[key]} />)
+              .map(key => <TaskView key={key} task={this.state.tasks[key]} update={this.updateTask} />)
           }
 
         </table>
