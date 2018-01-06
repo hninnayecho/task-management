@@ -7,8 +7,13 @@ padding: 15px;
 border-bottom: 1px solid #ddd;
 }
 
+input,select {
+  height: 20px;
+}
+
+
 .task-form {
   width: 250px;
-  margin: 0 auto;
+  margin: left auto;
 }
 
