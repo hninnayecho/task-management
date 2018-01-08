@@ -16,13 +16,13 @@ class Label extends Component {
         self.setState({
             value: event.target.value
         });
-        var updatetTask = {
+        var update = {
             id: self.props.task.id,
             name: self.props.task.name,
             dueDate: self.props.task.dueDate,
             label: event.target.value,
         };
-        self.props.updatelabel(updatetTask);
+        self.props.updatelabel(update);
     }
 
     render() {

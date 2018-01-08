@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Label from './Label';
+import EditTaskName from './EditTaskName';
 class TaskView extends Component {
 
     constructor(props) {
@@ -7,22 +8,23 @@ class TaskView extends Component {
         this.state = {
             task : this.props.task
         }
-        this.updateLabelTask = this.updateLabelTask.bind(this);
+        this.updateTask = this.updateTask.bind(this);
     }
 
-    updateLabelTask(updatetTask) {
+    updateTask(update) {
         this.setState({
-            task : updatetTask
+            task : update
         })
-        this.props.update(updatetTask);
+        this.props.update(update);
     }
 
     render() {
         return (
             <tr>
-                <td>{this.state.task.name}</td>
+                <td><EditTaskName task={this.state.task} updateName={this.updateTask}/>
+                    </td>
                 <td>{this.state.task.dueDate}</td>
-                <td><Label task={this.state.task} updatelabel={this.updateLabelTask} /></td></tr>
+                <td><Label task={this.state.task} updatelabel={this.updateTask} /></td></tr>
         )
     }
 }
