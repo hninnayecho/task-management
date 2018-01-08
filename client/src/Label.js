@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import $ from 'jquery';
 import './Label.css'
 
 class Label extends Component {
@@ -17,13 +16,13 @@ class Label extends Component {
         self.setState({
             value: event.target.value
         });
-        var task = {
+        var updatetTask = {
             id: self.props.task.id,
             name: self.props.task.name,
             dueDate: self.props.task.dueDate,
             label: event.target.value,
         };
-        self.props.updatelabel(task);
+        self.props.updatelabel(updatetTask);
     }
 
     render() {

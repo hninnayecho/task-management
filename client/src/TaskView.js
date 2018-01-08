@@ -4,21 +4,25 @@ class TaskView extends Component {
 
     constructor(props) {
         super(props);
-        this.updateLabelTask = this. updateLabelTask.bind(this);
+        this.state = {
+            task : this.props.task
+        }
+        this.updateLabelTask = this.updateLabelTask.bind(this);
     }
 
-    updateLabelTask(task) {
-        this.props.update(task);
+    updateLabelTask(updatetTask) {
+        this.setState({
+            task : updatetTask
+        })
+        this.props.update(updatetTask);
     }
 
     render() {
-        const task = this.props.task;
-        console.log(task.id);
         return (
             <tr>
-                <td>{this.props.task.name}</td>
-                <td>{this.props.task.dueDate}</td>
-                <td><Label task={this.props.task} updatelabel={this.updateLabelTask} /></td></tr>
+                <td>{this.state.task.name}</td>
+                <td>{this.state.task.dueDate}</td>
+                <td><Label task={this.state.task} updatelabel={this.updateLabelTask} /></td></tr>
         )
     }
 }
