@@ -9,7 +9,6 @@ class EditTaskName extends Component {
     }
 
     updateTaskName(value){
-        console.log(value+ "  value")
         var self = this;
         var update = {
             id: self.props.task.id,

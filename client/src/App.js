@@ -65,17 +65,18 @@ class App extends Component {
     ))
   }
 
-  updateTask(task) {
+  updateTask(update) {
     var self = this;
     var url = '/updateTask';
     $.ajax({
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ name: task.name, dueDate: task.dueDate, label: task.label, id: task.id }),
+      data: JSON.stringify({ name: update.name, dueDate: update.dueDate, label: update.label, id: update.id }),
       dataType: 'json',
       url: url,
       success: function (json) {
         console.log("Update Success");
+        console.log(json);
         self.setState({ tasks: json });
       },
       error: function (e) {
