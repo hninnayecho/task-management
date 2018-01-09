@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: [
+      tasks : [
       ]
     };
     this.addTaskToList = this.addTaskToList.bind(this);
@@ -67,7 +67,7 @@ class App extends Component {
 
   updateTask(task) {
     var self = this;
-    var url = '/updateLabel';
+    var url = '/updateTask';
     $.ajax({
       type: "POST",
       contentType: "application/json",

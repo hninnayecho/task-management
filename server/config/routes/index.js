@@ -15,7 +15,7 @@ router.get('/tasks', function (req, res, next) {
   });
 })
 
-router.post("/updateLabel", function (req, res, next) {
+router.post("/updateTask", function (req, res, next) {
   models.Task
     .update({
       name: req.body.name,
