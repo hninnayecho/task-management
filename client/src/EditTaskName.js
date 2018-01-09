@@ -9,12 +9,11 @@ class EditTaskName extends Component {
     }
 
     updateTaskName(value){
-       console.log(value);
        var chgValue = this;
        var update = {
-           name: chgValue.props.task.name,
+           name: value,
            dueDate: chgValue.props.task.dueDate,
-           label: value,
+           label: chgValue.props.task.label,
        };
        this.props.updateName(update);
     }
