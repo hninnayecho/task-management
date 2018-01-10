@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      tasks : [
+      tasks: [
       ]
     };
     this.addTaskToList = this.addTaskToList.bind(this);
@@ -48,7 +48,6 @@ class App extends Component {
   }
 
   addTaskToList(task) {
-    console.log(task);
     var self = this;
     var ts = Date.now();
     var newTask = {};
@@ -76,7 +75,6 @@ class App extends Component {
       url: url,
       success: function (json) {
         console.log("Update Success");
-        console.log(json);
         self.setState({ tasks: json });
       },
       error: function (e) {

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import ClickToEdit from 'react-click-to-edit';
 
 class EditTaskName extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.updateTaskName = this.updateTaskName.bind(this);
     }
 
-    updateTaskName(value){
+    updateTaskName(value) {
         var self = this;
         var update = {
             id: self.props.task.id,
@@ -18,12 +18,12 @@ class EditTaskName extends Component {
         };
         self.props.updateName(update);
     }
-    render (){
-        return(
+    render() {
+        return (
             <ClickToEdit
-            endEditing= {this.updateTaskName}>
-            {this.props.task.name}
-    </ClickToEdit>
+                endEditing={this.updateTaskName}>
+                {this.props.task.name}
+            </ClickToEdit>
         )
     }
 }

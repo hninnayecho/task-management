@@ -7,14 +7,16 @@ class EditDueDate extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            startDate: moment()
-          };
+            startDate: this.props.task.dueDate
+        };
         this.updateTaskDate = this.updateTaskDate.bind(this);
     }
 
     updateTaskDate(date) {
         var self = this;
-        self.setState({ startDate: date });
+        self.setState({
+            startDate: date
+        });
         var update = {
             id: self.props.task.id,
             name: self.props.task.name,
@@ -24,12 +26,13 @@ class EditDueDate extends Component {
         self.props.updateDueDate(update);
     }
     render() {
-        return <DatePicker
-            selected={this.state.startDate}
-            onChange={this.updateTaskName}
-            showYearDropdown
-            dateFormatCalendar="MMMM"
-        />;
+        return (
+            <DatePicker
+                selected={this.state.startDate
+                    ? moment(this.state.startDate, 'yyyy/mm/dd')
+                    : null}
+                onChange={this.updateTaskDate}
+            />)
     }
 }
 export default EditDueDate;
