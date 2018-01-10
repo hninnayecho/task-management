@@ -30,7 +30,7 @@ class App extends Component {
 
   handleSubmit(task) {
     var self = this;
-    var url = '/addTasks';
+    var url = '/addTask';
     $.ajax({
       type: "POST",
       contentType: "application/json",
@@ -42,7 +42,7 @@ class App extends Component {
         self.setState({ tasks: json });
       },
       error: function (e) {
-        console.error('/addTasks', e.toString());
+        console.error('/addTask', e.toString());
       }
     });
   }
@@ -78,7 +78,7 @@ class App extends Component {
         self.setState({ tasks: json });
       },
       error: function (e) {
-        console.error('/addTasks', e.toString());
+        console.error('/updateTask', e.toString());
       }
     });
 
