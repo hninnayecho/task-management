@@ -18,11 +18,10 @@ module.exports = {
                 label: req.body.label,
             })
             .then(function () {
-                models.Task.findAll().then(function (tasks) {
-                    res.json(tasks);
-                }).catch(function (err) {
-                    res.json([]);
-                });
+                return models.Task.findAll();
+            })
+            .then(function (tasks) {
+                res.json(tasks);
             }).catch(function (err) {
                 res.json([]);
             });
@@ -37,12 +36,12 @@ module.exports = {
             },
             {
                 where: { id: req.body.id }
-            }).then(function () {
-                models.Task.findAll().then(function (tasks) {
-                    res.json(tasks);
-                }).catch(function (err) {
-                    res.json([]);
-                });
+            })
+            .then(function () {
+                return models.Task.findAll();
+            })
+            .then(function (tasks) {
+                res.json(tasks);
             }).catch(function (err) {
                 res.json([]);
             });
