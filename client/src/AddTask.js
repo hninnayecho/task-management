@@ -47,10 +47,9 @@ class AddTask extends Component {
                 <input ref={(input) => this.name = input} type="text" placeholder="Task Name" />
 
                 <DatePicker
+                    dateFormat="YYYY-MM-DD"
                     selected={this.state.startDate}
                     onChange={this.chooseDate}
-                    showYearDropdown
-                    dateFormatCalendar="MMMM"
                 />
                 <div>
                     <select className="selectLabel" value={this.state.value} onChange={this.handleChange}>

@@ -28,8 +28,9 @@ class EditDueDate extends Component {
     render() {
         return (
             <DatePicker
+                dateFormat="YYYY-MM-DD"
                 selected={this.state.startDate
-                    ? moment(this.state.startDate, 'yyyy/mm/dd')
+                    ? moment(this.state.startDate)
                     : null}
                 onChange={this.updateTaskDate}
             />)
