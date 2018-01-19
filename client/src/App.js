@@ -4,10 +4,12 @@ import './App.css';
 import TaskView from './TaskView';
 import AddTask from './AddTask';
 
+import cookie from 'js-cookie';
+
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       tasks: [
       ]
@@ -15,11 +17,12 @@ class App extends Component {
     this.addTaskToList = this.addTaskToList.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTask = this.updateTask.bind(this);
+    this.handleSignout = this.handleSignout.bind(this);
   }
 
   componentDidMount() {
     var self = this;
-    fetch('/tasks').then(function (response) {
+    fetch('/api/tasks').then(function (response) {
       return response.json();
     }).then(function (json) {
       self.setState({
@@ -84,10 +87,22 @@ class App extends Component {
 
   }
 
+  handleSignout(event) {
+    event.preventDefault();
+    console.log('handleSignout');
+    var self = this;
+    fetch('/api/logout').then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      cookie.set('authenticated', false);
+      self.props.history.push('/login');
+    });
+  }
+
   render() {
     return (
       <div>
-
+        <button onClick={(e) => this.handleSignout(e)}>Logout</button>   
         <AddTask addTask={this.handleSubmit} />
         <table>
           <tr>
