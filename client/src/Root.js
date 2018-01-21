@@ -46,7 +46,7 @@ const Main = () => (
     <main>
         <Switch>
             <Route exact path='/login' component={Login} />
-            <PrivateRoute component={App} redirectTo="/login" />
+            <PrivateRoute component={App} redirectTo="/login" exact path="/tasks" />
             <Route exact path="/fake" component={SomeComponent} />
         </Switch>
     </main>
