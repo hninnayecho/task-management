@@ -4,6 +4,8 @@ import './App.css';
 import TaskView from './TaskView';
 import AddTask from './AddTask';
 
+import Header from './Header';
+
 import cookie from 'js-cookie';
 
 class App extends Component {
@@ -102,7 +104,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={(e) => this.handleSignout(e)}>Logout</button>   
+        <button onClick={(e) => this.handleSignout(e)}>Logout</button> 
+        <Header/>  
         <AddTask addTask={this.handleSubmit} />
         <table>
           <tr>
