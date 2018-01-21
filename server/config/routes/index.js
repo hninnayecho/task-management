@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../../api/models');
 var TaskController = require('../../api/controllers/TaskController');
+var UserController = require('../../api/controllers/UserController');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -13,6 +14,8 @@ router.get('/api/tasks', TaskController.getAllTasks);
 router.post("/updateTask", TaskController.updateTask);
 
 router.post("/addTask", TaskController.createTask);
+
+router.get('/api/users', UserController.getAllUsers);
 
 router.post('/api/login', function(req, res, next) {
   console.log('api/login route entered222');

@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import cookie from 'js-cookie';
 
 import Login from './Login';
-import App from './App';
+import TasksContainer from './TasksContainer';
+import UsersContainer from './UsersContainer';
 import SomeComponent from './SomeComponent';
 
 function isLoggedIn() {
@@ -46,7 +47,8 @@ const Main = () => (
     <main>
         <Switch>
             <Route exact path='/login' component={Login} />
-            <PrivateRoute component={App} redirectTo="/login" exact path="/tasks" />
+            <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/tasks" />
+            <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
             <Route exact path="/fake" component={SomeComponent} />
         </Switch>
     </main>
