@@ -18,7 +18,7 @@ class Users extends Component {
 
   componentDidMount() {
     var self = this;
-    fetch('/api/users').then(function (response) {
+    fetch('/api/users', {credentials: 'same-origin'}).then(function (response) {
       return response.json();
     }).then(function (json) {
       self.setState({
