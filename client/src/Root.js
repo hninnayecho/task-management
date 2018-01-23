@@ -8,6 +8,7 @@ import Login from './Login';
 import TasksContainer from './TasksContainer';
 import UsersContainer from './UsersContainer';
 import SomeComponent from './SomeComponent';
+import Signup from './Signup';
 
 function isLoggedIn() {
     return cookie.get('authenticated') === 'true';
@@ -50,6 +51,7 @@ const Main = () => (
             <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/tasks" />
             <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
             <Route exact path="/fake" component={SomeComponent} />
+            <Route component={Signup}  exact path="/signup" />
         </Switch>
     </main>
 );

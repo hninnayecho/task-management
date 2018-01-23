@@ -1,23 +1,22 @@
 import React from 'react';
 import $ from 'jquery';
 import { Link } from 'react-router-dom'
-
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props) {
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
     }
-
     handleLogin() {
         let self = this;
-        let email = this.email.value;
-        let password = this.password.value;
+        let username = self.username.value;
+        let email = self.email.value;
+        let password = self.password.value;
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify({ email: email, password: password }),
+            data: JSON.stringify({ username:username, email: email, password: password }),
             dataType: 'json',
-            url: '/api/login',
+            url: '/api/signup',
             // why async? to update this code
             async : false,
             success: function (json) {
@@ -28,22 +27,18 @@ class Login extends React.Component {
             }
         })
     }
-
     render() {
         return (
             <div>
-                <h5>Login</h5>
-
+                <h5>Register</h5>
                 <form onSubmit={(e) => this.handleLogin(e)}>
+                    <input ref={(input) => this.username = input} type="text" placeholder="UserName" />
                     <input ref={(input) => this.email = input} type="email" placeholder="Email" />
                     <input ref={(input) => this.password = input} type="password" placeholder="Password" />
-                    <button type="submit">Login</button>
+                    <button type="submit">Sign-up</button>
                 </form>
-                <br />
-                <Link to='/signup'>Users</Link>
             </div>
         );
     }
 }
-
-export default Login;
+export default Register;

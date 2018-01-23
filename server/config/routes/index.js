@@ -3,6 +3,8 @@ var router = express.Router();
 var models = require('../../api/models');
 var TaskController = require('../../api/controllers/TaskController');
 var UserController = require('../../api/controllers/UserController');
+var SignupController = require('../../api/controllers/SignupController');
+var LoginConrtroller = require('../../api/controllers/LoginController');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -17,7 +19,11 @@ router.post("/addTask", TaskController.createTask);
 
 router.get('/api/users', UserController.getAllUsers);
 
-router.post('/api/login', function(req, res, next) {
+router.post('/api/signup', SignupController.signup);
+
+router.post('/api/login', LoginConrtroller.login);
+
+/*router.post('/api/login', function(req, res, next) {
   console.log('api/login route entered222');
   var email = req.body.email;
   var password = req.body.password;
@@ -32,7 +38,7 @@ router.post('/api/login', function(req, res, next) {
     /*res.cookie('access_token', token, _.assign({}, options, {
       httpOnly: true,
     }));*/
-    res.cookie('authenticated', true, options);
+ /*   res.cookie('authenticated', true, options);
     res.json({});
     //res.send('success');
   } else {
@@ -41,7 +47,7 @@ router.post('/api/login', function(req, res, next) {
     res.json({});
     //res.send('error');
   }
-});
+});*/
 
 router.get('/api/logout', function(req, res, next) {
   console.log('/api/logout');
