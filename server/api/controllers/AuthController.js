@@ -26,7 +26,9 @@ exports.loginInLocal = (req, res, next) => {
         })
         .then(function (user) {
             if (user) {
-                authenticate(user, req, res);
+                console.log('user is ');
+                console.log(JSON.stringify(user));
+                authenticate({id: user.id, email: user.email}, req, res);
             } else {
                 console.log('>>>>>>>>> not authenticated');
                 res.json({});
@@ -57,8 +59,8 @@ exports.signUp = (req, res, next) => {
                         email: req.body.email,
                         password: req.body.password
                     })
-                    .then(function () {
-                        authenticate(user, req, res);
+                    .then(function (user) {
+                        authenticate({id: user.id, email: user.email}, req, res);
                     }).catch(function (err) {
                         res.json([]);
                     });
