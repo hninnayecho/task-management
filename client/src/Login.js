@@ -8,7 +8,8 @@ class Login extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
 
-    handleLogin() {
+    handleLogin(e) {
+        e.preventDefault();
         let self = this;
         let email = this.email.value;
         let password = this.password.value;

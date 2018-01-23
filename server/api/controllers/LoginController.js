@@ -11,20 +11,22 @@ module.exports = {
         }
       })
       .then(function (user) {
-        console.log('api/login route entered222');
-        var email = req.body.email;
-        var password = req.body.password;
-        console.log('email is ' + email);
-        console.log('password is ' + password);
-          const options = req.body.remember ? {
-            maxAge: 30 * 24 * 60 * 60 * 1000,
-          } : {};
-          res.cookie('authenticated', true, options);
-          res.json({});
-      }).catch(function (err) {
-        console.log('>>>>>>>>> not authenticated');
-        // don't do this in real project
-        res.json({});
-    });
+          if(user){
+            console.log('api/login route entered222');
+            var email = req.body.email;
+            var password = req.body.password;
+            console.log('email is ' + email);
+            console.log('password is ' + password);
+              const options = req.body.remember ? {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+              } : {};
+              res.cookie('authenticated', true, options);
+              res.json({});
+          }else{
+            console.log('>>>>>>>>> not authenticated');
+            // don't do this in real project
+            res.json({});
+          }
+      });
   }
 };

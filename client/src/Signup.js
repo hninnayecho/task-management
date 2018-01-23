@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 class Register extends React.Component {
     constructor(props) {
         super(props);
-        this.handleLogin = this.handleLogin.bind(this);
+        this.handleSignup = this.handleSignup.bind(this);
     }
-    handleLogin() {
+    handleSignup(e) {
+        e.preventDefault();
         let self = this;
         let username = self.username.value;
         let email = self.email.value;
@@ -31,7 +32,7 @@ class Register extends React.Component {
         return (
             <div>
                 <h5>Register</h5>
-                <form onSubmit={(e) => this.handleLogin(e)}>
+                <form onSubmit={(e) => this.handleSignup(e)}>
                     <input ref={(input) => this.username = input} type="text" placeholder="UserName" />
                     <input ref={(input) => this.email = input} type="email" placeholder="Email" />
                     <input ref={(input) => this.password = input} type="password" placeholder="Password" />
