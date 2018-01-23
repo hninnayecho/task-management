@@ -4,24 +4,24 @@ var models = require('../../api/models');
 var TaskController = require('../../api/controllers/TaskController');
 var UserController = require('../../api/controllers/UserController');
 var SignupController = require('../../api/controllers/SignupController');
-var LoginConrtroller = require('../../api/controllers/LoginController');
+var AuthController = require('../../api/controllers/AuthController');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/api/tasks', TaskController.getAllTasks);
+router.get('/api/tasks', AuthController.ensureSignedIn, TaskController.getAllTasks);
 
-router.post("/updateTask", TaskController.updateTask);
+router.post("/updateTask", AuthController.ensureSignedIn, TaskController.updateTask);
 
-router.post("/addTask", TaskController.createTask);
+router.post("/addTask", AuthController.ensureSignedIn, TaskController.createTask);
 
-router.get('/api/users', UserController.getAllUsers);
+router.get('/api/users', AuthController.ensureSignedIn, UserController.getAllUsers);
 
-router.post('/api/signup', SignupController.signup);
+router.post('/api/signup', AuthController.signUp);
 
-router.post('/api/login', LoginConrtroller.login);
+router.post('/api/login', AuthController.loginInLocal);
 
 /*router.post('/api/login', function(req, res, next) {
   console.log('api/login route entered222');

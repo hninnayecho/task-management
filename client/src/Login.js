@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
@@ -13,21 +14,18 @@ class Login extends React.Component {
         let self = this;
         let email = this.email.value;
         let password = this.password.value;
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ email: email, password: password }),
-            dataType: 'json',
-            url: '/api/login',
-            // why async? to update this code
-            async : false,
-            success: function (json) {
+        axios
+            .post("/api/login", {
+                email,
+                password
+            })
+            .then(function (response) {
+                console.log(response);
                 self.props.history.push('/tasks');
-            },
-            error: function (e) {
-                // handle this
-            }
-        })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
@@ -36,8 +34,16 @@ class Login extends React.Component {
                 <h5>Login</h5>
 
                 <form onSubmit={(e) => this.handleLogin(e)}>
-                    <input ref={(input) => this.email = input} type="email" placeholder="Email" />
-                    <input ref={(input) => this.password = input} type="password" placeholder="Password" />
+                    <input
+                        ref={input => (this.email = input)}
+                        type="email"
+                        placeholder="Email"
+                    />
+                    <input
+                        ref={input => (this.password = input)}
+                        type="password"
+                        placeholder="Password"
+                    />
                     <button type="submit">Login</button>
                 </form>
                 <br />
