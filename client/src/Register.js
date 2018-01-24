@@ -8,26 +8,26 @@ class Register extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
 
-    handleLogin() {
+    handleLogin(e) {
+        e.preventDefault();
         let self = this;
         let username = self.username.value;
         let email = self.email.value;
         let password = self.password.value;
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ username:username, email: email, password: password }),
-            dataType: 'json',
-            url: '/api/register',
-            // why async? to update this code
-            async : false,
-            success: function (json) {
-                self.props.history.push('/tasks');
-            },
-            error: function (e) {
-                // handle this
-            }
+
+        axios
+        .post("/api/register", {
+            username,
+            email,
+            password
         })
+        .then(function (response) {
+          console.log(response);
+          self.props.history.push('/tasks');
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
 
     render() {
