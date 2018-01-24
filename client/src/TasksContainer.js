@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 import './App.css';
 import TaskView from './TaskView';
 import AddTask from './AddTask';
@@ -24,7 +25,7 @@ class TasksContainer extends Component {
 
   componentDidMount() {
     var self = this;
-    fetch('/api/tasks', {credentials: 'same-origin'}).then(function (response) {
+    fetch('/api/tasks', { credentials: 'same-origin' }).then(function (response) {
       return response.json();
     }).then(function (json) {
       self.setState({
@@ -34,22 +35,23 @@ class TasksContainer extends Component {
   }
 
   handleSubmit(task) {
-    var self = this;
-    var url = '/addTask';
-    $.ajax({
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({ name: task.name, dueDate: task.dueDate, label: task.label }),
-      dataType: 'json',
-      url: url,
-      success: function (json) {
-        console.log("Save Success");
-        self.setState({ tasks: json });
-      },
-      error: function (e) {
-        console.error('/addTask', e.toString());
-      }
-    });
+    let self = this;
+    let name = task.name
+    let dueDate = task.dueDate;
+    let label = task.label;
+    axios
+      .post("/api/tasks/add", {
+        name,
+        dueDate,
+        label
+      })
+      .then(function (response) {
+        console.log(response.data);
+        self.setState({ tasks: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   addTaskToList(task) {
@@ -70,23 +72,25 @@ class TasksContainer extends Component {
   }
 
   updateTask(update) {
-    var self = this;
-    var url = '/updateTask';
-    $.ajax({
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({ name: update.name, dueDate: update.dueDate, label: update.label, id: update.id }),
-      dataType: 'json',
-      url: url,
-      success: function (json) {
-        console.log("Update Success");
-        self.setState({ tasks: json });
-      },
-      error: function (e) {
-        console.error('/updateTask', e.toString());
-      }
-    });
-
+    let self = this;
+    let id =  update.id;
+    let name = update.name;
+    let dueDate = update.dueDate;
+    let label = update.label;
+    axios
+      .post("/api/tasks/update", {
+        id,
+        name,
+        dueDate,
+        label
+      })
+      .then(function (response) {
+        console.log(response.data);
+        self.setState({ tasks: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleSignout(event) {
@@ -104,8 +108,8 @@ class TasksContainer extends Component {
   render() {
     return (
       <div>
-        <button onClick={(e) => this.handleSignout(e)}>Logout</button> 
-        <Header/>  
+        <button onClick={(e) => this.handleSignout(e)}>Logout</button>
+        <Header />
         <AddTask addTask={this.handleSubmit} />
         <table>
           <tr>

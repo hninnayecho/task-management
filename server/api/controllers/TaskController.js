@@ -33,11 +33,14 @@ module.exports = {
     },
 
     updateTask: function (req, res, next) {
+        console.log("req.body.id   "+req.body.id);
+
         models.Task
             .update({
                 name: req.body.name,
                 dueDate: req.body.dueDate,
                 label: req.body.label,
+                CreatedById: req.user.id
             },
             {
                 where: { id: req.body.id }
