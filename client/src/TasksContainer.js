@@ -8,7 +8,7 @@ import Header from './Header';
 
 import cookie from 'js-cookie';
 
-class App extends Component {
+class TasksContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ class App extends Component {
 
   componentDidMount() {
     var self = this;
-    fetch('/api/tasks').then(function (response) {
+    fetch('/api/tasks', {credentials: 'same-origin'}).then(function (response) {
       return response.json();
     }).then(function (json) {
       self.setState({
@@ -125,4 +125,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default TasksContainer;

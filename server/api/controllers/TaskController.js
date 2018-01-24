@@ -3,7 +3,9 @@ var models = require("../models");
 module.exports = {
 
     getAllTasks: function (req, res, next) {
-        models.Task.findAll().then(function (tasks) {
+        models.Task.findAll({
+            where: { CreatedById: req.user.id }
+        }).then(function (tasks) {
             res.json(tasks);
         }).catch(function (err) {
             res.json([]);
@@ -16,9 +18,12 @@ module.exports = {
                 name: req.body.name,
                 dueDate: req.body.dueDate,
                 label: req.body.label,
+                CreatedById: req.user.id
             })
             .then(function () {
-                return models.Task.findAll();
+                return models.Task.findAll({
+                    where: { CreatedById: req.user.id }
+                });
             })
             .then(function (tasks) {
                 res.json(tasks);
@@ -38,7 +43,10 @@ module.exports = {
                 where: { id: req.body.id }
             })
             .then(function () {
-                return models.Task.findAll();
+                return models.Task.findAll({
+                    where: { CreatedById: req.user.id }
+                }
+                );
             })
             .then(function (tasks) {
                 res.json(tasks);
