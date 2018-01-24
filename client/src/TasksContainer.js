@@ -35,7 +35,7 @@ class TasksContainer extends Component {
 
   handleSubmit(task) {
     var self = this;
-    var url = '/addTask';
+    var url = '/api/tasks/add';
     $.ajax({
       type: "POST",
       contentType: "application/json",
@@ -47,7 +47,7 @@ class TasksContainer extends Component {
         self.setState({ tasks: json });
       },
       error: function (e) {
-        console.error('/addTask', e.toString());
+        console.error('api/tasks/add', e.toString());
       }
     });
   }
@@ -71,7 +71,7 @@ class TasksContainer extends Component {
 
   updateTask(update) {
     var self = this;
-    var url = '/updateTask';
+    var url = '/api/tasks/update';
     $.ajax({
       type: "POST",
       contentType: "application/json",
