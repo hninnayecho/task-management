@@ -3,6 +3,9 @@ const _ = require('lodash');
 
 const jwtSecret = 'no secret';
 var models = require("../models");
+var nodemailer = require('nodemailer');
+var MailTrasnporter = require('../utils/MailTransporter');
+
 
 function authenticate(user, req, res) {
     const token = jwt.sign(user, jwtSecret);
@@ -28,7 +31,7 @@ exports.loginInLocal = (req, res, next) => {
             if (user) {
                 console.log('user is ');
                 console.log(JSON.stringify(user));
-                authenticate({id: user.id, email: user.email}, req, res);
+                authenticate({ id: user.id, email: user.email }, req, res);
             } else {
                 console.log('>>>>>>>>> not authenticated');
                 res.json({});
@@ -40,9 +43,6 @@ exports.signUp = (req, res, next) => {
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
-    console.log('username is ' + username);
-    console.log('email is ' + email);
-    console.log('password is ' + password);
     models.User
         .findOne({
             where: {
@@ -60,7 +60,8 @@ exports.signUp = (req, res, next) => {
                         password: req.body.password
                     })
                     .then(function (user) {
-                        authenticate({id: user.id, email: user.email}, req, res);
+                        MailTrasnporter.sentMail({ to: user.email });
+                        authenticate({ id: user.id, email: user.email }, req, res);
                     }).catch(function (err) {
                         res.json([]);
                     });
