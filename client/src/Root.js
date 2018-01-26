@@ -4,11 +4,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import cookie from 'js-cookie';
 
-import Login from './Login';
-import TasksContainer from './TasksContainer';
-import UsersContainer from './UsersContainer';
-import SomeComponent from './SomeComponent';
-import Signup from './Signup';
+import Login from './components/User/Login';
+import TasksContainer from './components/task/TasksContainer';
+import UsersContainer from './components/user/UsersContainer';
+import SomeComponent from './components/SomeComponent';
+import Signup from './components/user/Signup';
 
 function isLoggedIn() {
     return cookie.get('authenticated') === 'true';
@@ -20,15 +20,6 @@ const renderMergedProps = (component, ...rest) => {
         React.createElement(component, finalProps)
     );
 }
-
-const PropsRoute = ({ component, ...rest }) => {
-    return (
-        <Route {...rest} render={routeProps => {
-            return renderMergedProps(component, routeProps, rest);
-        }} />
-    );
-}
-
 const PrivateRoute = ({ component, redirectTo, ...rest }) => {
     return (
         <Route {...rest} render={routeProps => {

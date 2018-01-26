@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import axios from 'axios';
 import './App.css';
 import TaskView from './TaskView';
-import AddTask from './AddTask';
+import TaskForm from './TaskForm';
 
-import Header from './Header';
+import Header from '../../Header';
 
 import cookie from 'js-cookie';
 
@@ -23,7 +22,7 @@ class TasksContainer extends Component {
     this.handleSignout = this.handleSignout.bind(this);
   }
 
-  componentDidMount() {
+ componentDidMount() {
     var self = this;
     fetch('/api/tasks', { credentials: 'same-origin' }).then(function (response) {
       return response.json();
@@ -110,7 +109,7 @@ class TasksContainer extends Component {
       <div>
         <button onClick={(e) => this.handleSignout(e)}>Logout</button>
         <Header />
-        <AddTask addTask={this.handleSubmit} />
+        <TaskForm addTask={this.handleSubmit} />
         <table>
           <tr>
             <td>Name</td>

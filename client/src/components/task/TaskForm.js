@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-class AddTask extends Component {
+import './App.css';
+class TaskForm extends Component {
 
     constructor(props) {
         super(props);
@@ -41,7 +41,7 @@ class AddTask extends Component {
 
     render() {
         return (
-            <form className="task-form" onSubmit={(e) => this.addNewTask(e)}>
+            <form className="add-Task" onSubmit={(e) => this.addNewTask(e)}>
                 <p>Add task</p>
 
                 <input ref={(input) => this.name = input} type="text" placeholder="Task Name" />
@@ -64,4 +64,4 @@ class AddTask extends Component {
     }
 }
 
-export default AddTask;
+export default TaskForm;

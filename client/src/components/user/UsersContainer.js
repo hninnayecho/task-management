@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
-import './App.css';
 import UserView from './UserView';
-import Header from './Header';
+import Header from '../../Header';
 import cookie from 'js-cookie';
 
 class Users extends Component {
