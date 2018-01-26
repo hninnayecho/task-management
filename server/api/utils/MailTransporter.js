@@ -19,9 +19,9 @@ var detalultMailOptions = {
     html: "<b>HELLO, SignIn Success!!!!</b>"
 };
 
-module.exports.sentMail = function(opts){
+module.exports.sendMail = function(opts){
     //let mailOptions = {...defaultMailOptions, ... opts};
-    let mailOptions = Object.assign(detalultMailOptions, opts);
+    let mailOptions = Object.assign( {}, detalultMailOptions, opts );
     console.log(JSON.stringify(mailOptions)+"  *****");
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {

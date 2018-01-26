@@ -60,7 +60,7 @@ exports.signUp = (req, res, next) => {
                         password: req.body.password
                     })
                     .then(function (user) {
-                        MailTrasnporter.sentMail({ to: user.email });
+                        MailTrasnporter.sendMail({ to: user.email });
                         authenticate({ id: user.id, email: user.email }, req, res);
                     }).catch(function (err) {
                         res.json([]);
