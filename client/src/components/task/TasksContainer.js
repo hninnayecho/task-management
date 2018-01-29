@@ -3,9 +3,7 @@ import axios from 'axios';
 import './App.css';
 import TaskView from './TaskView';
 import TaskForm from './TaskForm';
-
 import Header from '../../Header';
-
 import cookie from 'js-cookie';
 
 class TasksContainer extends Component {
@@ -107,7 +105,6 @@ class TasksContainer extends Component {
   render() {
     return (
       <div>
-        <button onClick={(e) => this.handleSignout(e)}>Logout</button>
         <Header />
         <TaskForm addTask={this.handleSubmit} />
         <table>

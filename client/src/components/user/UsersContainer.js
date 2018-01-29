@@ -40,7 +40,6 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <button onClick={(e) => this.handleSignout(e)}>Logout</button> 
         <Header/>
         <table>
           <tr>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from '../../Header';
 import CommentForm from '../comment/CommentForm';
 import CommentList from '../comment/CommentList';
 import axios from 'axios';
@@ -55,6 +56,7 @@ class TaskDetail extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <label>Name: </label>
                 <span>{this.state.task.name}</span><br />
                 <label>Label: </label>
