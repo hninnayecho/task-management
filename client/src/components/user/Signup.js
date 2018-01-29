@@ -39,7 +39,7 @@ class Register extends React.Component {
     }
     render() {
         return (
-            <Form horizontal onSubmit={(e) => this.handleSignup(e)}>
+            <Form className="form" horizontal onSubmit={(e) => this.handleSignup(e)}>
                 <Col smOffset={3} sm={10}>
                     <h3 >User Register</h3></Col>
 

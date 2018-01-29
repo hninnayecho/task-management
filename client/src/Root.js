@@ -6,6 +6,7 @@ import cookie from 'js-cookie';
 
 import Login from './components/User/Login';
 import TasksContainer from './components/task/TasksContainer';
+import TaskDetail from './components/task/TaskDetail';
 import UsersContainer from './components/user/UsersContainer';
 import SomeComponent from './components/SomeComponent';
 import Signup from './components/user/Signup';
@@ -41,6 +42,7 @@ const Main = () => (
             <Route exact path='/login' component={Login} />
             <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/tasks" />
             <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
+            <PrivateRoute component={TaskDetail} redirectTo="/login" path="/tasks/:taskId" />
             <Route exact path="/fake" component={SomeComponent} />
             <Route component={Signup}  exact path="/signup" />
         </Switch>

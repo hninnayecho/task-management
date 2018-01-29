@@ -40,7 +40,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <Form horizontal onSubmit={(e) => this.handleLogin(e)}>
+            <Form className="form" horizontal onSubmit={(e) => this.handleLogin(e)}>
                 <Col smOffset={3} sm={10}>
                     <h3 >Login Form</h3></Col>
                 <FormGroup controlId="email">

@@ -12,6 +12,16 @@ module.exports = {
         });
     },
 
+    taskDetail: function (req, res, next) {
+        models.Task.find({
+            where: { id: req.params.task_id }
+        }).then(function (task) {
+            res.json(task);
+        }).catch(function (err) {
+            res.json([]);
+        });
+    },
+
     createTask: function (req, res, next) {
         models.Task
             .create({

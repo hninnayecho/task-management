@@ -115,6 +115,7 @@ class TasksContainer extends Component {
             <td>Name</td>
             <td>DueDate</td>
             <td>Label</td>
+            <td>Detail</td>
           </tr>
           {
             Object

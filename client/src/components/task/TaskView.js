@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import Label from './Label';
 import EditTaskName from './EditTaskName';
 import EditDueDate from './EditDueDate';
+
 class TaskView extends Component {
 
     constructor(props) {
@@ -24,7 +26,8 @@ class TaskView extends Component {
             <tr>
                 <td><EditTaskName task={this.state.task} updateName={this.updateTask} /></td>
                 <td><EditDueDate task={this.state.task} updateDueDate={this.updateTask} /></td>
-                <td><Label task={this.state.task} updatelabel={this.updateTask} /></td></tr>
+                <td><Label task={this.state.task} updatelabel={this.updateTask} /></td>
+                <td><Link to={`/tasks/${this.state.task.id}`}>Detail</Link></td></tr>
         )
     }
 }
