@@ -20,7 +20,9 @@ router.post("/api/tasks/add", AuthController.ensureSignedIn, TaskController.crea
 
 router.get("/api/tasks/:task_id", AuthController.ensureSignedIn, TaskController.taskDetail);
 
-router.post("/api/tasks/:task_id/comment/add", AuthController.ensureSignedIn, CommentController.createComment);
+router.post("/api/tasks/:task_id/comments/add", AuthController.ensureSignedIn, CommentController.createComment);
+
+router.get("/api/tasks/:task_id/comments", AuthController.ensureSignedIn, CommentController.getAllComments);
 
 router.get('/api/users', AuthController.ensureSignedIn, UserController.getAllUsers);
 

@@ -10,15 +10,6 @@ class TaskDetail extends Component {
             task: [
             ],
             comments: [
-                {
-                    description: 'hello'
-                },
-                {
-                    description: 'hi'
-                },
-                {
-                    description: 'bye'
-                }
             ]
         };
         this.saveComment = this.saveComment.bind(this);
@@ -31,9 +22,16 @@ class TaskDetail extends Component {
             return response.json();
         }).then(function (json) {
             console.log(json);
-
             self.setState({
                 task: json
+            })
+        });
+        fetch(`/api/tasks/${taskId}/comments`, { credentials: 'same-origin' }).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            console.log(json);
+            self.setState({
+                comments: json
             })
         });
     }
@@ -42,7 +40,7 @@ class TaskDetail extends Component {
         var self = this;
         let taskId = this.state.task.id;
         axios
-            .post(`/api/tasks/${taskId}/comment/add`, {
+            .post(`/api/tasks/${taskId}/comments/add`, {
                 comment
             })
             .then(function (response) {
@@ -57,22 +55,15 @@ class TaskDetail extends Component {
     render() {
         return (
             <div>
-                <div className="from">
-                    <span className="label">Name: </span>
-                    <span className="value">{this.state.task.name}</span>
-                </div>
-                <div className="status">
-                    <span className="label">Label: </span>
-                    <span className="value">{this.state.task.label}</span>
-                </div>
-                <div className="message">
-                    <span className="label">DueDate: </span>
-                    <span className="value">{this.state.task.dueDate}</span>
-                </div>
+                <label>Name: </label>
+                <span>{this.state.task.name}</span><br />
+                <label>Label: </label>
+                <span>{this.state.task.label}</span><br />
+                <label>DueDate: </label>
+                <span>{this.state.task.dueDate}</span><br />
                 <div><CommentList comments={this.state.comments} /></div>
                 <div><CommentForm addComment={this.saveComment} /> </div>
             </div>
-
         );
     }
 }

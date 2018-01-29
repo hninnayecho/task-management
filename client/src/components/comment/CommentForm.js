@@ -20,7 +20,6 @@ class CommentForm extends Component {
     render() {
         return (
             <form className="add-Comment"  onSubmit={(e) => this.addNewCommment(e)}>
-                <p></p>
                 <input ref={(input) => this.comment = input} type="text" placeholder="Comment" />
                 <button type="submit">Comment</button>
             </form>
