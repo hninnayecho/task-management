@@ -40,7 +40,7 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header history= {this.props.history}/>
         <table>
           <tr>
             <td>UserName</td>

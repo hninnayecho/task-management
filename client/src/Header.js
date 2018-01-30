@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
-import Button from 'material-ui/Button';
+import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -24,7 +24,7 @@ const Menu = () => (
 
 class Header extends Component {
 
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.handleSignout = this.handleSignout.bind(this);
   }
@@ -45,13 +45,14 @@ class Header extends Component {
     return (
       <div>
         <MuiThemeProvider>
-        <AppBar
-          title='Tasks'
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          iconElementLeft={<Menu />}
-          iconElementRight={<Button
-            style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }} onClick={(e) => this.handleSignout(e)}>Logout</Button>}
-        />
+          <AppBar
+            title='Tasks'
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            iconElementLeft={<Menu />}
+            iconElementRight={<RaisedButton style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }}
+              label="Logout" primary={true}
+              onClick={(e) => this.handleSignout(e)} />}
+          />
         </MuiThemeProvider>
       </div>
     );
