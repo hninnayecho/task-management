@@ -14,6 +14,8 @@ router.get('/', function (req, res, next) {
 
 router.get('/api/tasks', AuthController.ensureSignedIn, TaskController.getAllTasks);
 
+router.get('/api/calendar', AuthController.ensureSignedIn, TaskController.getAllTasks);
+
 router.post("/api/tasks/update", AuthController.ensureSignedIn, TaskController.updateTask);
 
 router.post("/api/tasks/add", AuthController.ensureSignedIn, TaskController.createTask);
