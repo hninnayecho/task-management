@@ -12,26 +12,6 @@ class MyCalendar extends Component {
     super(porps);
     this.state = {
       myEventList: [
-        {
-          id: 0,
-          title: 'All Day Event very long title',
-          allDay: true,
-          start: new Date(2018, 2, 1),
-          end: new Date(2018, 2, 1),
-        },
-        {
-          id: 1,
-          title: 'Long Event',
-          start: new Date(2018, 2, 10),
-          end: new Date(2018, 2, 10),
-        },
-
-        {
-          id: 2,
-          title: 'DTS STARTS',
-          start: new Date(2018, 0, 20),
-          end: new Date(2018, 0, 20),
-        }
       ]
     };
   }
@@ -41,15 +21,6 @@ class MyCalendar extends Component {
     fetch('/api/calendar', { credentials: 'same-origin' }).then(function (response) {
       return response.json();
     }).then(function (json) {
-      /*var newJson = [];
-      for (var key in json) {
-        newJson.push({
-          id: json[key].id,
-          title: json[key].name,
-          start: json[key].dueDate,
-          end: json[key].dueDate
-        });
-      }*/
       let events = json.map((task)=> {
         return {
           id: task.id,
