@@ -28,10 +28,10 @@ class TasksContainer extends Component {
   componentDidMount() {
     var self = this;
     fetch("/api/tasks", { credentials: "same-origin" })
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(json) {
+      .then(function (json) {
         self.setState({
           tasks: json
         });
@@ -53,24 +53,27 @@ class TasksContainer extends Component {
   handleSubmit(task) {
     let self = this;
     let name = task.name;
-    let dueDate = task.dueDate;
+    let startDate = task.startDate;
+    let endDate = task.endDate;
     let label = task.label;
     this.setState({ formOpen: false });
-    axios
-      .post("/api/tasks/add", {
-        name,
-        dueDate,
-        label
-      })
-      .then(function(response) {
-        console.log(response.data);
-        if (response.data.length > 0) {
-          self.setState({ tasks: response.data });
-        }
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      axios
+        .post("/api/tasks/add", {
+          name,
+          startDate,
+          endDate,
+          label
+        })
+        .then(function (response) {
+          console.log(response.data);
+          if (response.data.length > 0) {
+            self.setState({ tasks: response.data });
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    
   }
 
   addTaskToList(task) {
@@ -83,32 +86,28 @@ class TasksContainer extends Component {
     self.setState({ tasks: newTasks });
   }
 
-  renderTasks() {
-    return this.state.tasks.map(task => (
-      <TaskView key={task.name} task={task} />
-    ));
-  }
-
   updateTask(update) {
     let self = this;
     let id = update.id;
     let name = update.name;
-    let dueDate = update.dueDate;
+    let startDate = update.startDate;
+    let endDate = update.endDate;
     let label = update.label;
-    axios
-      .post("/api/tasks/update", {
-        id,
-        name,
-        dueDate,
-        label
-      })
-      .then(function(response) {
-        console.log(response.data);
-        self.setState({ tasks: response.data });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      axios
+        .post("/api/tasks/update", {
+          id,
+          name,
+          startDate,
+          endDate,
+          label
+        })
+        .then(function (response) {
+          console.log(response.data);
+          self.setState({ tasks: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
   }
 
   handleSignout(event) {
@@ -116,10 +115,10 @@ class TasksContainer extends Component {
     console.log("handleSignout");
     var self = this;
     fetch("/api/logout")
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(json) {
+      .then(function (json) {
         cookie.set("authenticated", false);
         self.props.history.push("/login");
       });
@@ -130,7 +129,7 @@ class TasksContainer extends Component {
       <div>
         <MuiThemeProvider>
           <div>
-            <Header history={this.props.history} title='Tasks'/>
+            <Header history={this.props.history} title='Tasks' />
           </div>
           <div>
             <RaisedButton label="Add New Task" onClick={this.handleOpen} />
@@ -144,7 +143,8 @@ class TasksContainer extends Component {
             <table>
               <tr>
                 <td>Name</td>
-                <td>DueDate</td>
+                <td>StartDate</td>
+                <td>EndDate</td>
                 <td>Label</td>
                 <td>Detail</td>
               </tr>

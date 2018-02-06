@@ -61,8 +61,10 @@ class TaskDetail extends Component {
                 <span>{this.state.task.name}</span><br />
                 <label>Label: </label>
                 <span>{this.state.task.label}</span><br />
-                <label>DueDate: </label>
-                <span>{this.state.task.dueDate}</span><br />
+                <label>StartDate: </label>
+                <span>{this.state.task.startDate}</span><br />
+                <label>EndDate: </label>
+                <span>{this.state.task.endDate}</span><br />
                 <div><CommentList comments={this.state.comments} /></div>
                 <div><CommentForm addComment={this.saveComment} /> </div>
             </div>

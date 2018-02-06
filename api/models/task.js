@@ -12,7 +12,11 @@ module.exports = function(sequelize, Sequelize) {
           len: [1, 50]
         }
       },
-      dueDate: {
+      startDate: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+      },
+      endDate: {
         type: Sequelize.DATEONLY,
         allowNull: true
       },

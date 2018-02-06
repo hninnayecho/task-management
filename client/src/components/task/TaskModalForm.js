@@ -15,8 +15,10 @@ class TaskModalForm extends Component {
   constructor(props) {
     super(props);
     this.taskName = '';
-    this.dueDate = new Date();
+    this.startDate = new Date();
+    this.endDate = new Date();
     this.label = 'Pending';
+    this.button = false;
   }
 
   render() {
@@ -28,10 +30,12 @@ class TaskModalForm extends Component {
           <FlatButton
             label="Submit"
             primary={true}
+            disabled = {this.button}
             keyboardFocused={true}
             onClick={() => this.props.handleSubmit({
               name: this.taskName,
-              dueDate: this.dueDate,
+              startDate: this.startDate,
+              endDate: this.endDate,
               label: this.label
             })}
           />
@@ -44,12 +48,12 @@ class TaskModalForm extends Component {
         <div>
           <TextField hintText="Task Name" onChange={(e, newValue) => this.taskName = newValue} />
           <br />
-          <DatePicker hintText="Due Date" onChange={(e, newDate) => this.dueDate = newDate} />
+          <DatePicker hintText="Start Date" onChange={(e, newDate) => this.startDate = newDate} /><br />
+          <DatePicker hintText="End Date" onChange={(e, newDate) => this.endDate = newDate}/>
           <SelectField
             floatingLabelText="Choose Label"
             value="Pending"
-            onChange={(e, key, value) => this.label = value}
-          >
+            onChange={(e, key, value) => this.label = value} >
             <MenuItem value="Pending" primaryText="Pending" />
             <MenuItem value="InProgress" primaryText="InProgress" />
             <MenuItem value="Finished" primaryText="FInished" />

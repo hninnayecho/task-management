@@ -25,8 +25,8 @@ class MyCalendar extends Component {
         return {
           id: task.id,
           title: task.name,
-          start: task.dueDate,
-          end: task.dueDate
+          start: task.startDate,
+          end: task.endDate
         }
       })
       self.setState({

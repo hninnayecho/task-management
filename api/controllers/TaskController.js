@@ -26,7 +26,8 @@ module.exports = {
         models.Task
             .create({
                 name: req.body.name,
-                dueDate: req.body.dueDate,
+                startDate: req.body.startDate,
+                endDate: req.body.endDate,
                 label: req.body.label,
                 CreatedById: req.user.id
             })
@@ -43,12 +44,13 @@ module.exports = {
     },
 
     updateTask: function (req, res, next) {
-        console.log("req.body.id   "+req.body.id);
+        console.log("req.body.id   " + req.body.id);
 
         models.Task
             .update({
                 name: req.body.name,
-                dueDate: req.body.dueDate,
+                startDate: req.body.startDate,
+                endDate: req.body.endDate,
                 label: req.body.label,
                 CreatedById: req.user.id
             },
