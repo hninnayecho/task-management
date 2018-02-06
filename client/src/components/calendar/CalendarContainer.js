@@ -67,7 +67,7 @@ class MyCalendar extends Component {
   render() {
     return (
       <div>
-        <div><Header history= {this.props.history}/></div>
+        <div><Header history= {this.props.history} title='Calendar'/></div>
         <div className="text-center" style={{ background: "#fff", padding: "20px 0px" }}>
           <BigCalendar
             selectable

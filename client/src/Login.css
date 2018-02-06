@@ -1,0 +1,14 @@
+Html, body{
+	height:100%;
+    margin:0px;
+    padding:0px;
+}
+.root{
+        display:table;
+        height:100%;
+        margin: 0 auto;
+}
+.parentContainer{
+    display:table-cell;
+    vertical-align:middle;  
+}

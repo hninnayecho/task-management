@@ -17,7 +17,6 @@ const Menu = () => (
     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
   >
     <MenuItem linkButton={true} href="/tasks" primaryText="Tasks" />
-    <MenuItem linkButton={true} href="/users" primaryText="Users" />
     <MenuItem linkButton={true} href="/calendar" primaryText="MyCalendar" />
   </IconMenu>
 );
@@ -47,7 +46,7 @@ class Header extends Component {
       <div>
         <MuiThemeProvider>
           <AppBar
-            title='Tasks'
+            title={this.props.title}
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             iconElementLeft={<Menu />}
             iconElementRight={<RaisedButton style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }}
