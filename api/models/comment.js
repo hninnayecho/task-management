@@ -17,6 +17,7 @@ module.exports = function(sequelize, Sequelize) {
 
   Comment.associate = function(models) {
     Comment.belongsTo(models.Task, { as: 'task' });
+    Comment.belongsTo(models.User);
   };
   return Comment;
 };

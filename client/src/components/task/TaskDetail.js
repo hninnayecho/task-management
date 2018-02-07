@@ -40,9 +40,11 @@ class TaskDetail extends Component {
     saveComment(comment) {
         var self = this;
         let taskId = this.state.task.id;
+        let userId = this.state.task.CreatedById;
         axios
             .post(`/api/tasks/${taskId}/comments/add`, {
-                comment
+                comment,
+                userId
             })
             .then(function (response) {
                 console.log(response.data);

@@ -31,7 +31,7 @@ exports.loginInLocal = (req, res, next) => {
             if (user) {
                 console.log('user is ');
                 console.log(JSON.stringify(user));
-                authenticate({ id: user.id, email: user.email }, req, res);
+                authenticate({ id: user.id, email: user.email}, req, res);
             } else {
                 console.log('>>>>>>>>> not authenticated');
                 res.json({});
