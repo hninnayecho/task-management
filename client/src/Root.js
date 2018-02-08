@@ -38,23 +38,19 @@ const PrivateRoute = ({ component, redirectTo, ...rest }) => {
 };
 
 const Main = () => (
-    <main>
-        <Switch>
-            <Route exact path='/login' component={Login} />
-            <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/tasks" />
-            <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
-            <PrivateRoute component={CalendarContainer} redirectTo="/login" exact path="/calendar" />
-            <PrivateRoute component={TaskDetail} redirectTo="/login" path="/tasks/:taskId" />
-            <Route exact path="/fake" component={SomeComponent} />
-            <Route component={Signup}  exact path="/signup" />
-        </Switch>
-    </main>
+    <Switch>
+        <Route exact path='/login' component={Login} />
+        <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/tasks" />
+        <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
+        <PrivateRoute component={CalendarContainer} redirectTo="/login" exact path="/calendar" />
+        <PrivateRoute component={TaskDetail} redirectTo="/login" path="/tasks/:taskId" />
+        <Route exact path="/fake" component={SomeComponent} />
+        <Route component={Signup} exact path="/signup" />
+    </Switch>
 );
 
 const Root = () => (
-    <div>
-        <Main />
-    </div>
+  <Main />
 );
 
 export default Root;

@@ -40,14 +40,16 @@ class Login extends React.Component {
 
     render() {
         return (
+            <div className="container">
             <Form className="form" horizontal onSubmit={(e) => this.handleLogin(e)}>
-                <Col smOffset={3} sm={10}>
-                    <h3 >Login Form</h3></Col>
+                <Col smOffset={2} sm={10}>
+                    <h3 >Login Form</h3>
+                </Col>
                 <FormGroup controlId="email">
                     <Col componentClass={ControlLabel} sm={2}>
                         Email
-            </Col>
-                    <Col sm={7}>
+                    </Col>
+                    <Col sm={12}>
                         <FormControl type="email" placeholder="Email" onChange={this.handleChange} />
                     </Col>
                 </FormGroup>
@@ -55,8 +57,8 @@ class Login extends React.Component {
                 <FormGroup controlId="password">
                     <Col componentClass={ControlLabel} sm={2}>
                         Password
-            </Col>
-                    <Col sm={7}>
+                    </Col>
+                    <Col sm={12}>
                         <FormControl type="password" placeholder="Password" onChange={this.handleChange} />
                     </Col>
                 </FormGroup>
@@ -67,11 +69,12 @@ class Login extends React.Component {
                     </Col>
                 </FormGroup>
                 <FormGroup>
-                    <Col smOffset={1} sm={10}>
+                    <Col smOffset={2} sm={10}>
                         Not Register! <Link className="link" to='/signup'>Create an account</Link>
                     </Col>
                 </FormGroup>
             </Form>
+            </div>
         );
     }
 }

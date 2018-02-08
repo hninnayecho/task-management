@@ -39,15 +39,17 @@ class Register extends React.Component {
     }
     render() {
         return (
+            <div className="container">
             <Form className="form" horizontal onSubmit={(e) => this.handleSignup(e)}>
-                <Col smOffset={3} sm={10}>
-                    <h3 >User Register</h3></Col>
+                <Col smOffset={2} sm={10}>
+                    <h3 >User Register</h3>
+                </Col>
 
                 <FormGroup controlId="username">
                     <Col componentClass={ControlLabel} sm={2}>
                         UserName
                 </Col>
-                    <Col sm={7}>
+                    <Col sm={12}>
                         <FormControl type="text" placeholder="Username" onChange={this.handleChange} />
                     </Col>
                 </FormGroup>
@@ -55,7 +57,7 @@ class Register extends React.Component {
                     <Col componentClass={ControlLabel} sm={2}>
                         Email
                 </Col>
-                    <Col sm={7}>
+                    <Col sm={12}>
                         <FormControl type="email" placeholder="Email" onChange={this.handleChange} />
                     </Col>
                 </FormGroup>
@@ -64,7 +66,7 @@ class Register extends React.Component {
                     <Col componentClass={ControlLabel} sm={2}>
                         Password
                 </Col>
-                    <Col sm={7}>
+                    <Col sm={12}>
                         <FormControl type="password" placeholder="Password" onChange={this.handleChange} />
                     </Col>
                 </FormGroup>
@@ -75,6 +77,7 @@ class Register extends React.Component {
                     </Col>
                 </FormGroup>
             </Form>
+            </div>
         );
     }
 }
