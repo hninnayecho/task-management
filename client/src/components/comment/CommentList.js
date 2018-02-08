@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CommentView from './CommentView';
+import "./comment.css";
 
 class CommentList extends Component {
 
@@ -9,14 +10,14 @@ class CommentList extends Component {
   }
 
   render() {
-      return (
-      <div>
-        <h1>List of Comments</h1>
+    return (
+      <div className="commetView">
+        <p>List of Comments</p>
         {
-            Object
-              .keys(this.props.comments)
-              .map(key => <CommentView key={key} comment={this.props.comments[key]} />)
-          }
+          Object
+            .keys(this.props.comments)
+            .map(key => <CommentView key={key} comment={this.props.comments[key]} />)
+        }
       </div>
     );
   }

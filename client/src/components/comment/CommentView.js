@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import './comment.css';
 
 class CommentView extends Component {
 
@@ -8,11 +9,11 @@ class CommentView extends Component {
 
     return (
 
-      <div className="from">
+      <div className="card">
         <MuiThemeProvider >
           <Card>
             <CardHeader
-              title= {"CreatedBy  "+ this.props.comment.User.username}
+              title={"CreatedBy  " + this.props.comment.User.username}
               actAsExpander={true}
               showExpandableButton={false}
             />
