@@ -39,6 +39,7 @@ class MyCalendar extends Component {
     return (
       <div>
         <div><Header history= {this.props.history} title='Calendar'/></div>
+        <div className="contentContainer">
         <div className="text-center" style={{ background: "#fff", padding: "20px 0px" }}>
           <BigCalendar
             selectable
@@ -47,6 +48,7 @@ class MyCalendar extends Component {
             style={{ height: "400px" }}
             defaultDate={new Date()}
           />
+        </div>
         </div>
       </div>
     );

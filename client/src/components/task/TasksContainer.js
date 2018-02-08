@@ -9,6 +9,16 @@ import "./App.css";
 import RaisedButton from "material-ui/RaisedButton";
 import TaskModalForm from "./TaskModalForm";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Paper from 'material-ui/Paper';
+
+const buttonStyle = {
+  marginTop: 20,
+  marginLeft: 3,
+  textAlign: 'center',
+  display: 'inline-block',
+  background: 'green'
+};
+
 
 class TasksContainer extends Component {
   constructor(props) {
@@ -131,7 +141,9 @@ class TasksContainer extends Component {
           <div>
             <Header history={this.props.history} title='Tasks' />
           </div>
-          <div>
+          <div className="contentContainer">
+          <Paper>
+          <div style={buttonStyle}>
             <RaisedButton label="Add New Task" onClick={this.handleOpen} />
           </div>
           <TaskModalForm
@@ -156,6 +168,8 @@ class TasksContainer extends Component {
                 />
               ))}
             </table>
+          </div>
+          </Paper>
           </div>
         </MuiThemeProvider>
       </div>

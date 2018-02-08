@@ -19,4 +19,11 @@ border-bottom: 1px solid #ddd;
   margin-top: 30px;
 }
 
+.contentContainer {
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
+}
+
 

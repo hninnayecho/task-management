@@ -9,7 +9,6 @@ import TasksContainer from './components/task/TasksContainer';
 import TaskDetail from './components/task/TaskDetail';
 import UsersContainer from './components/user/UsersContainer';
 import CalendarContainer from './components/calendar/CalendarContainer';
-import SomeComponent from './components/SomeComponent';
 import Signup from './components/user/Signup';
 
 function isLoggedIn() {
@@ -44,7 +43,6 @@ const Main = () => (
         <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
         <PrivateRoute component={CalendarContainer} redirectTo="/login" exact path="/calendar" />
         <PrivateRoute component={TaskDetail} redirectTo="/login" path="/tasks/:taskId" />
-        <Route exact path="/fake" component={SomeComponent} />
         <Route component={Signup} exact path="/signup" />
     </Switch>
 );
