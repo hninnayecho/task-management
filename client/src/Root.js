@@ -39,6 +39,7 @@ const PrivateRoute = ({ component, redirectTo, ...rest }) => {
 const Main = () => (
     <Switch>
         <Route exact path='/login' component={Login} />
+        <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/" />
         <PrivateRoute component={TasksContainer} redirectTo="/login" exact path="/tasks" />
         <PrivateRoute component={UsersContainer} redirectTo="/login" exact path="/users" />
         <PrivateRoute component={CalendarContainer} redirectTo="/login" exact path="/calendar" />
@@ -48,7 +49,7 @@ const Main = () => (
 );
 
 const Root = () => (
-  <Main />
+    <Main />
 );
 
 export default Root;

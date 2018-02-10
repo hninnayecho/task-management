@@ -36,7 +36,8 @@ Object.keys(db).forEach(function (modelName) {
 });
 
 // using force update
-sequelize.sync({ force: false }).then(function () {
+sequelize.sync({ force: true }).then(function () {
+  db.User.create({ username: 'cho', email: 'cho@email.com', password: 'cho' });
 });
 
 db.sequelize = sequelize;

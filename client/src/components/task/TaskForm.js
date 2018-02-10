@@ -13,7 +13,7 @@ class TaskForm extends Component {
         super(props);
         this.state = {
             label: "Pending",
-            dueDate:new Date
+            dueDate: new Date
         };
         this.addNewTask = this.addNewTask.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -33,9 +33,9 @@ class TaskForm extends Component {
 
     handleChange(event, index, value) {
         this.setState({
-          label: value
+            label: value
         });
-      }
+    }
     chooseDate(date) {
         this.setState({
             dueDate: date
@@ -44,30 +44,30 @@ class TaskForm extends Component {
 
     render() {
         return (
-<div>
-<MuiThemeProvider>
-  <form onSubmit={(e) => this.addNewTask(e)}>
-    <p>Add task</p>
-    <TextField
-      floatingLabelText="Task Name"
-      ref="taskName" /><br />
-    <DatePicker
-      container="inline" floatingLabelText="Due Date" onChange={this.onDateChange} value={this.state.dueDate} />
-    <br />
-    <SelectField
-      floatingLabelText="Choose Label"
-      value={this.state.label}
-      onChange={this.handleChange}>
-      <MenuItem value={"Pending"} primaryText="Pending" />
-      <MenuItem value={"InProgress"} primaryText="InProgress" />
-      <MenuItem value={"Finished"} primaryText="FInished" />
-    </SelectField>
-    <br />
-    <RaisedButton style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }}
-    label="Add Task" primary={true}  type="submit"/>
-  </form>
-</MuiThemeProvider>
-</div>
+            <div>
+                <MuiThemeProvider>
+                    <form onSubmit={(e) => this.addNewTask(e)}>
+                        <p>Add task</p>
+                        <TextField
+                            floatingLabelText="Task Name"
+                            ref="taskName" /><br />
+                        <DatePicker
+                            container="inline" floatingLabelText="Due Date" onChange={this.onDateChange} value={this.state.dueDate} />
+                        <br />
+                        <SelectField
+                            floatingLabelText="Choose Label"
+                            value={this.state.label}
+                            onChange={this.handleChange}>
+                            <MenuItem value={"Pending"} primaryText="Pending" />
+                            <MenuItem value={"InProgress"} primaryText="InProgress" />
+                            <MenuItem value={"Finished"} primaryText="FInished" />
+                        </SelectField>
+                        <br />
+                        <RaisedButton style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }}
+                            label="Add Task" primary={true} type="submit" />
+                    </form>
+                </MuiThemeProvider>
+            </div>
         );
     }
 }

@@ -67,23 +67,23 @@ class TasksContainer extends Component {
     let endDate = task.endDate;
     let label = task.label;
     this.setState({ formOpen: false });
-      axios
-        .post("/api/tasks/add", {
-          name,
-          startDate,
-          endDate,
-          label
-        })
-        .then(function (response) {
-          console.log(response.data);
-          if (response.data.length > 0) {
-            self.setState({ tasks: response.data });
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    
+    axios
+      .post("/api/tasks/add", {
+        name,
+        startDate,
+        endDate,
+        label
+      })
+      .then(function (response) {
+        console.log(response.data);
+        if (response.data.length > 0) {
+          self.setState({ tasks: response.data });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
   }
 
   addTaskToList(task) {
@@ -103,21 +103,21 @@ class TasksContainer extends Component {
     let startDate = update.startDate;
     let endDate = update.endDate;
     let label = update.label;
-      axios
-        .post("/api/tasks/update", {
-          id,
-          name,
-          startDate,
-          endDate,
-          label
-        })
-        .then(function (response) {
-          console.log(response.data);
-          self.setState({ tasks: response.data });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    axios
+      .post("/api/tasks/update", {
+        id,
+        name,
+        startDate,
+        endDate,
+        label
+      })
+      .then(function (response) {
+        console.log(response.data);
+        self.setState({ tasks: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleSignout(event) {
@@ -136,40 +136,40 @@ class TasksContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ overflow: 'auto', height: 'inherit', display: 'block' }}>
         <MuiThemeProvider>
           <div>
             <Header history={this.props.history} title='Tasks' />
           </div>
           <div className="contentContainer">
-          <Paper>
-          <div style={buttonStyle}>
-            <RaisedButton label="Add New Task" onClick={this.handleOpen} />
-          </div>
-          <TaskModalForm
-            handleClose={this.handleClose}
-            open={this.state.formOpen}
-            handleSubmit={this.handleSubmit}
-          />
-          <div>
-            <table>
-              <tr>
-                <td>Name</td>
-                <td>StartDate</td>
-                <td>EndDate</td>
-                <td>Label</td>
-                <td>Detail</td>
-              </tr>
-              {Object.keys(this.state.tasks).map(key => (
-                <TaskView
-                  key={key}
-                  task={this.state.tasks[key]}
-                  update={this.updateTask}
-                />
-              ))}
-            </table>
-          </div>
-          </Paper>
+            <Paper>
+              <div style={buttonStyle}>
+                <RaisedButton label="Add New Task" onClick={this.handleOpen} />
+              </div>
+              <TaskModalForm
+                handleClose={this.handleClose}
+                open={this.state.formOpen}
+                handleSubmit={this.handleSubmit}
+              />
+              <div>
+                <table>
+                  <tr>
+                    <td>Name</td>
+                    <td>StartDate</td>
+                    <td>EndDate</td>
+                    <td>Label</td>
+                    <td>Detail</td>
+                  </tr>
+                  {Object.keys(this.state.tasks).map(key => (
+                    <TaskView
+                      key={key}
+                      task={this.state.tasks[key]}
+                      update={this.updateTask}
+                    />
+                  ))}
+                </table>
+              </div>
+            </Paper>
           </div>
         </MuiThemeProvider>
       </div>

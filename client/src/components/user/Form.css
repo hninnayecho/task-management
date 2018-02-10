@@ -8,6 +8,8 @@
 h3{
     font-size: 25px;
     font-weight: bold;
+    color: rgb(45, 152, 255);
+    padding-top: 5px;
 }
 .form {
     background: #f2f2f7;

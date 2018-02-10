@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
   var User = sequelize.define(
     'User',
     {
@@ -33,3 +33,4 @@ module.exports = function(sequelize, Sequelize) {
   );
   return User;
 };
+

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Col, Form, Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Form.css'
+import { colors } from 'material-ui';
 
 class Login extends React.Component {
     constructor(props) {
@@ -41,39 +42,39 @@ class Login extends React.Component {
     render() {
         return (
             <div className="container">
-            <Form className="form" horizontal onSubmit={(e) => this.handleLogin(e)}>
-                <Col smOffset={2} sm={10}>
-                    <h3 >Login Form</h3>
-                </Col>
-                <FormGroup controlId="email">
-                    <Col componentClass={ControlLabel} sm={2}>
-                        Email
-                    </Col>
-                    <Col sm={12}>
-                        <FormControl type="email" placeholder="Email" onChange={this.handleChange} />
-                    </Col>
-                </FormGroup>
-
-                <FormGroup controlId="password">
-                    <Col componentClass={ControlLabel} sm={2}>
-                        Password
-                    </Col>
-                    <Col sm={12}>
-                        <FormControl type="password" placeholder="Password" onChange={this.handleChange} />
-                    </Col>
-                </FormGroup>
-
-                <FormGroup>
+                <Form className="form" horizontal onSubmit={(e) => this.handleLogin(e)}>
                     <Col smOffset={2} sm={10}>
-                        <Button className="btn" type="submit">Sign in</Button>
+                        <h3>Login Form</h3>
                     </Col>
-                </FormGroup>
-                <FormGroup>
-                    <Col smOffset={2} sm={10}>
-                        Not Register! <Link className="link" to='/signup'>Create an account</Link>
+                    <FormGroup controlId="email">
+                        <Col componentClass={ControlLabel} sm={2}>
+                            Email
                     </Col>
-                </FormGroup>
-            </Form>
+                        <Col sm={12}>
+                            <FormControl type="email" placeholder="Email" onChange={this.handleChange} />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup controlId="password">
+                        <Col componentClass={ControlLabel} sm={2}>
+                            Password
+                    </Col>
+                        <Col sm={12}>
+                            <FormControl type="password" placeholder="Password" onChange={this.handleChange} />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Col smOffset={2} sm={10}>
+                            <Button className="btn" type="submit">Sign in</Button>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        <Col smOffset={2} sm={10}>
+                            Not Register! <Link className="link" to='/signup'>Create an account</Link>
+                        </Col>
+                    </FormGroup>
+                </Form>
             </div>
         );
     }
