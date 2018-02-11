@@ -151,7 +151,7 @@ class TasksContainer extends Component {
                 open={this.state.formOpen}
                 handleSubmit={this.handleSubmit}
               />
-              <div>
+              <div style={{ overflow: 'auto', height: 'inherit', display: 'block' }}>
                 <table>
                   <tr>
                     <td>Name</td>

@@ -24,7 +24,7 @@ class CommentView extends Component {
 
     return (
 
-      <div >
+      <div style={{ overflow: 'auto', height: 'inherit', display: 'block' }}>
         <MuiThemeProvider >
           <Card style={styles.card} containerStyle={{width: 300}}>
             <CardHeader style={styles.cardHeader}

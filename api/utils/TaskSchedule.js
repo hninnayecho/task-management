@@ -5,8 +5,8 @@ var schedule = require('node-schedule');
 module.exports.init = function () {
   var rule = new schedule.RecurrenceRule();
   rule.dayOfWeek = new schedule.Range(0, 6);
-  rule.hour = 13;
-  rule.minute = 44;
+  rule.hour = 14;
+  rule.minute = 15;
   var mailschedule = schedule.scheduleJob(rule, function () {
     console.log("Schedule Start");
     var tomorrow = new Date();
