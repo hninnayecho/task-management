@@ -28,7 +28,7 @@ module.exports = function(sequelize, Sequelize) {
   );
 
   Task.associate = function(models) {
-    Task.belongsTo(models.User, { as: 'CreatedBy' });
+    Task.belongsTo(models.User);
   };
   return Task;
 };
