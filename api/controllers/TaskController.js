@@ -33,7 +33,10 @@ module.exports = {
 
     taskDetail: function (req, res, next) {
         models.Task.find({
-            where: { id: req.params.task_id }
+            where: { id: req.params.task_id },
+            include: [
+                {model: models.User}
+            ]
         }).then(function (task) {
             res.json(task);
         }).catch(function (err) {
