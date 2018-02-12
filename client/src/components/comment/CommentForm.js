@@ -8,7 +8,8 @@ class CommentForm extends Component {
         super(props);
         this.state = {
             tasks: [
-            ]
+            ],
+            commentText: ''
         };
         this.addNewCommment = this.addNewCommment.bind(this);
     }
@@ -16,7 +17,8 @@ class CommentForm extends Component {
 
     addNewCommment(e) {
         e.preventDefault();
-        this.props.addComment(this.refs.comment.getValue());
+        this.props.addComment(this.state.commentText);
+        this.setState({ commentText: '' });
     }
 
     render() {
@@ -25,7 +27,8 @@ class CommentForm extends Component {
                 <TextField
                     style={{ width: "90%" }}
                     floatingLabelText="Write Comments"
-                    ref="comment" />
+                    onChange={(e, newValue) => this.setState({ commentText: newValue })}
+                    value={this.state.commentText} />
                 <RaisedButton style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }}
                     label="Comment" primary={true} type="submit" />
             </form>
