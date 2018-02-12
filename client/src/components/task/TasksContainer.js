@@ -10,6 +10,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import TaskModalForm from "./TaskModalForm";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Paper from 'material-ui/Paper';
+import Snackbar from 'material-ui/Snackbar';
 
 const buttonStyle = {
   marginTop: 20,
@@ -33,6 +34,7 @@ class TasksContainer extends Component {
     this.handleSignout = this.handleSignout.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
   componentDidMount() {
@@ -66,7 +68,10 @@ class TasksContainer extends Component {
     let startDate = task.startDate;
     let endDate = task.endDate;
     let label = task.label;
-    this.setState({ formOpen: false });
+    this.setState({
+      open: false,
+      formOpen: false
+    });
     axios
       .post("/api/tasks/add", {
         name,
@@ -77,7 +82,10 @@ class TasksContainer extends Component {
       .then(function (response) {
         console.log(response.data);
         if (response.data.length > 0) {
-          self.setState({ tasks: response.data });
+          self.setState({
+            open: true,
+            tasks: response.data
+          });
         }
       })
       .catch(function (error) {
@@ -120,6 +128,12 @@ class TasksContainer extends Component {
       });
   }
 
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
+
   handleSignout(event) {
     event.preventDefault();
     console.log("handleSignout");
@@ -150,6 +164,12 @@ class TasksContainer extends Component {
                 handleClose={this.handleClose}
                 open={this.state.formOpen}
                 handleSubmit={this.handleSubmit}
+              />
+              <Snackbar
+                open={this.state.open}
+                message="You created New Task!!!"
+                autoHideDuration={3000}
+                onRequestClose={this.handleRequestClose}
               />
               <div style={{ overflow: 'auto', height: 'inherit', display: 'block' }}>
                 <table>

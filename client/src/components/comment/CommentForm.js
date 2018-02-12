@@ -25,7 +25,6 @@ class CommentForm extends Component {
                 <TextField
                     style={{ width: "90%" }}
                     floatingLabelText="Write Comments"
-                    multiline={true}
                     ref="comment" />
                 <RaisedButton style={{ color: 'white', fontSize: '15px', fontWeight: 'bold' }}
                     label="Comment" primary={true} type="submit" />

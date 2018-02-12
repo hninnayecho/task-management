@@ -4,6 +4,8 @@ import CommentForm from '../comment/CommentForm';
 import CommentList from '../comment/CommentList';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
+import TextField from 'material-ui/TextField';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 const style = {
@@ -82,6 +84,7 @@ class TaskDetail extends Component {
                             <span>{this.state.task.startDate}</span><br />
                             <label>EndDate: </label>
                             <span>{this.state.task.endDate}</span><br />
+                            <Divider />
                             <div><CommentList comments={this.state.comments} /></div>
                             <div><CommentForm addComment={this.saveComment} /> </div>
                         </ Paper>
