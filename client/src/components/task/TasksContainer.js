@@ -11,14 +11,35 @@ import TaskModalForm from "./TaskModalForm";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Paper from 'material-ui/Paper';
 import Snackbar from 'material-ui/Snackbar';
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
+
+const main = {
+  display: 'flex'
+}
 
 const buttonStyle = {
+  width: '30%',
   marginTop: 20,
-  marginLeft: 3,
+  width: 700,
+  marginLeft: '3%',
   textAlign: 'center',
   display: 'inline-block',
-  background: 'green'
+  float: 'left',
 };
+
+const selectDivStyle = {
+  width: '70%',
+  marginTop: 25,
+  marginLeft: '70%',
+  float: 'left',
+  display: 'inline-block',
+}
+
+const selectStyle = {
+  width: 150,
+  textAlign: 'center'
+}
 
 
 class TasksContainer extends Component {
@@ -26,7 +47,8 @@ class TasksContainer extends Component {
     super(props);
     this.state = {
       tasks: [],
-      formOpen: false
+      formOpen: false,
+      label: 'All'
     };
     this.addTaskToList = this.addTaskToList.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,6 +57,7 @@ class TasksContainer extends Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.handleLabelChange = this.handleLabelChange.bind(this);
   }
 
   componentDidMount() {
@@ -120,7 +143,6 @@ class TasksContainer extends Component {
         label
       })
       .then(function (response) {
-        console.log(response.data);
         self.setState({ tasks: response.data });
       })
       .catch(function (error) {
@@ -148,6 +170,31 @@ class TasksContainer extends Component {
       });
   }
 
+  handleLabelChange(e, key, value) {
+    var self = this;
+    this.setState({
+      label: value
+    });
+    var tasks = this.state.tasks;
+    var filterPendingTasks = tasks.filter(task => task.label === "Pending");
+    var filterFinishedTasks = tasks.filter(task => task.label === "Finished");
+    var filterInProgressTasks = tasks.filter(task => task.label === "InProgress");
+    if (value === "Pending") {
+      this.setState({
+        tasks: filterPendingTasks
+      })
+    } else if (value === "Finished") {
+      this.setState({
+        tasks: filterFinishedTasks
+      })
+    } else if (value === "InProgress") {
+      this.setState({
+        tasks: filterInProgressTasks
+      })
+    }
+    console.log(tasks+"     *********");
+  }
+
   render() {
     return (
       <div style={{ overflow: 'auto', height: 'inherit', display: 'block' }}>
@@ -157,8 +204,21 @@ class TasksContainer extends Component {
           </div>
           <div className="contentContainer">
             <Paper>
-              <div style={buttonStyle}>
-                <RaisedButton label="Add New Task" onClick={this.handleOpen} />
+              <div style={main}>
+                <div style={buttonStyle}>
+                  <RaisedButton label="Add New Task" onClick={this.handleOpen} />
+                </div>
+                <div style={selectDivStyle}>
+                  <SelectField
+                    style={selectStyle}
+                    value={this.state.label}
+                    onChange={this.handleLabelChange} >
+                    <MenuItem value="All" primaryText="All" />
+                    <MenuItem value="Pending" primaryText="Pending" />
+                    <MenuItem value="InProgress" primaryText="InProgress" />
+                    <MenuItem value="Finished" primaryText="FInished" />
+                  </SelectField>
+                </div>
               </div>
               <TaskModalForm
                 handleClose={this.handleClose}

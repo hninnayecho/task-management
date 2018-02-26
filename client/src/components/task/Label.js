@@ -32,7 +32,7 @@ class Label extends Component {
             return (
                 <td bgcolor="Blue">
                     <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="Pending">Penidng</option>
+                        <option value="Pending">Pending</option>
                         <option value="Finished">Finished</option>
                         <option value="InProgress" selected>InProgress</option>
                     </select>
@@ -43,7 +43,7 @@ class Label extends Component {
             return (
                 <td bgcolor="#FA8072">
                     <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="Pending" selected>Penidng</option>
+                        <option value="Pending" selected>Pending</option>
                         <option value="Finished">Finished</option>
                         <option value="InProgress" >InProgress</option>
                     </select>
@@ -54,7 +54,7 @@ class Label extends Component {
             return (
                 <td bgcolor="green">
                     <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="Pending">Penidng</option>
+                        <option value="Pending">Pending</option>
                         <option value="Finished" selected>Finished</option>
                         <option value="InProgress" >InProgress</option>
                     </select>

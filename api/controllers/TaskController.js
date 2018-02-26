@@ -5,7 +5,9 @@ module.exports = {
 
     getAllTasks: function (req, res, next) {
         models.Task.findAll({
-            where: { UserId: req.user.id }
+            where: {
+                UserId: req.user.id
+            }
         }).then(function (tasks) {
             res.json(tasks);
         }).catch(function (err) {
@@ -15,9 +17,9 @@ module.exports = {
 
     getTaskTomorrowEndDate: function (endDate) {
         models.Task.findAll({
-            where: { endDate: endDate},
+            where: { endDate: endDate },
             include: [
-                {model: models.User}
+                { model: models.User }
             ]
         }).then(function (tasks) {
             tasks.forEach(task => {
@@ -35,7 +37,7 @@ module.exports = {
         models.Task.find({
             where: { id: req.params.task_id },
             include: [
-                {model: models.User}
+                { model: models.User }
             ]
         }).then(function (task) {
             res.json(task);
@@ -76,9 +78,9 @@ module.exports = {
                 label: req.body.label,
                 UserId: req.user.id
             },
-            {
-                where: { id: req.body.id }
-            })
+                {
+                    where: { id: req.body.id }
+                })
             .then(function () {
                 return models.Task.findAll({
                     where: { UserId: req.user.id }

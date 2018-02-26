@@ -14,10 +14,12 @@ class TaskModalForm extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      label : 'Pending'
+    }
     this.taskName = '';
     this.startDate = new Date();
     this.endDate = new Date();
-    this.label = 'Pending';
     this.button = false;
     this.open = false;
   }
@@ -37,7 +39,7 @@ class TaskModalForm extends Component {
               name: this.taskName,
               startDate: this.startDate,
               endDate: this.endDate,
-              label: this.label
+              label: this.state.label
             })}
           />
         ]}
@@ -53,8 +55,8 @@ class TaskModalForm extends Component {
           <DatePicker autoOk="true" hintText="End Date" onChange={(e, newDate) => this.endDate = newDate} />
           <SelectField
             floatingLabelText="Choose Label"
-            value="Pending"
-            onChange={(e, key, value) => this.label = value} >
+            value={this.state.label}
+            onChange={(e, key, value) => this.setState({label: value})} >
             <MenuItem value="Pending" primaryText="Pending" />
             <MenuItem value="InProgress" primaryText="InProgress" />
             <MenuItem value="Finished" primaryText="FInished" />

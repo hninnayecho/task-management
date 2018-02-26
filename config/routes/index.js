@@ -32,7 +32,7 @@ router.post('/api/signup', AuthController.signUp);
 
 router.post('/api/login', AuthController.loginInLocal);
 
-router.get('/api/logout', function(req, res, next) {
+router.get('/api/logout', function (req, res, next) {
   console.log('/api/logout');
   //res.clearCookie('access_token');
   res.clearCookie('authenticated');
