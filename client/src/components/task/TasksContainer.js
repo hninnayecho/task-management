@@ -171,31 +171,24 @@ class TasksContainer extends Component {
   }
 
   handleLabelChange(e, key, value) {
+    e.preventDefault();
     var self = this;
+    let newTasks = [...this.state.tasks];
     this.setState({
-      label: value
+      label: value,
+      tasks: newTasks
     });
-    var tasks = this.state.tasks;
-    var filterPendingTasks = tasks.filter(task => task.label === "Pending");
-    var filterFinishedTasks = tasks.filter(task => task.label === "Finished");
-    var filterInProgressTasks = tasks.filter(task => task.label === "InProgress");
-    if (value === "Pending") {
-      this.setState({
-        tasks: filterPendingTasks
-      })
-    } else if (value === "Finished") {
-      this.setState({
-        tasks: filterFinishedTasks
-      })
-    } else if (value === "InProgress") {
-      this.setState({
-        tasks: filterInProgressTasks
-      })
-    }
-    console.log(tasks+"     *********");
+    this.forceUpdate();
   }
 
   render() {
+    let filteredTasks;
+    if (this.state.label === 'All') {
+      filteredTasks = this.state.tasks;
+    } else {
+      filteredTasks = this.state.tasks.filter(task => task.label === this.state.label);
+    }
+
     return (
       <div style={{ overflow: 'auto', height: 'inherit', display: 'block' }}>
         <MuiThemeProvider>
@@ -216,7 +209,7 @@ class TasksContainer extends Component {
                     <MenuItem value="All" primaryText="All" />
                     <MenuItem value="Pending" primaryText="Pending" />
                     <MenuItem value="InProgress" primaryText="InProgress" />
-                    <MenuItem value="Finished" primaryText="FInished" />
+                    <MenuItem value="Finished" primaryText="Finished" />
                   </SelectField>
                 </div>
               </div>
@@ -240,13 +233,15 @@ class TasksContainer extends Component {
                     <td>Label</td>
                     <td>Detail</td>
                   </tr>
-                  {Object.keys(this.state.tasks).map(key => (
-                    <TaskView
-                      key={key}
-                      task={this.state.tasks[key]}
-                      update={this.updateTask}
-                    />
-                  ))}
+                  {
+                    filteredTasks.map(task => (
+                      <TaskView
+                        key={task.id}
+                        task={task}
+                        update={this.updateTask}
+                      />
+                    ))
+                  }
                 </table>
               </div>
             </Paper>
