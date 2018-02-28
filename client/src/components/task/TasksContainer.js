@@ -188,8 +188,10 @@ class TasksContainer extends Component {
     let filteredTasks;
     if (this.state.label === 'All') {
       filteredTasks = this.state.tasks;
+      filteredTasks.sort((task1, task2) => task1.id > task2.id);
     } else {
       filteredTasks = this.state.tasks.filter(task => task.label === this.state.label);
+      filteredTasks.sort((task1, task2) => task1.id > task2.id);
     }
 
     return (
