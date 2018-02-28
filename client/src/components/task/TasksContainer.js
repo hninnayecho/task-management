@@ -15,11 +15,13 @@ import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
 const main = {
+  position: 'relative',
   display: 'flex'
 }
 
 const buttonStyle = {
-  width: '30%',
+  position: 'relative',
+  width: '50%',
   marginTop: 20,
   width: 700,
   marginLeft: '3%',
@@ -29,7 +31,8 @@ const buttonStyle = {
 };
 
 const selectDivStyle = {
-  width: '70%',
+  position: 'relative',
+  width: '50%',
   marginTop: 25,
   marginLeft: '70%',
   float: 'left',
@@ -37,7 +40,8 @@ const selectDivStyle = {
 }
 
 const selectStyle = {
-  width: 150,
+  position: 'relative',
+  width: '80%',
   textAlign: 'center'
 }
 
@@ -114,7 +118,6 @@ class TasksContainer extends Component {
       .catch(function (error) {
         console.log(error);
       });
-
   }
 
   addTaskToList(task) {
@@ -199,7 +202,7 @@ class TasksContainer extends Component {
             <Paper>
               <div style={main}>
                 <div style={buttonStyle}>
-                  <RaisedButton label="Add New Task" onClick={this.handleOpen} />
+                  <RaisedButton label="Add New Task" labelPosition="before" onClick={this.handleOpen} containerElement="label"/>
                 </div>
                 <div style={selectDivStyle}>
                   <SelectField
