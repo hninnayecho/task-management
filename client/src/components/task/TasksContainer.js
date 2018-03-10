@@ -15,34 +15,23 @@ import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
 const main = {
-  position: 'relative',
+  justifyContent: 'space-between',
   display: 'flex'
 }
 
 const buttonStyle = {
-  position: 'relative',
-  width: '50%',
   marginTop: 20,
-  width: 700,
-  marginLeft: '3%',
-  textAlign: 'center',
+  width: 500,
+  marginLeft: '10px',
+  textAlign: 'left',
   display: 'inline-block',
-  float: 'left',
 };
 
 const selectDivStyle = {
-  position: 'relative',
-  width: '50%',
-  marginTop: 25,
-  marginLeft: '70%',
-  float: 'left',
+  width: '400',
+  marginTop: 20,
+  textAlign: 'left',
   display: 'inline-block',
-}
-
-const selectStyle = {
-  position: 'relative',
-  width: '80%',
-  textAlign: 'center'
 }
 
 
@@ -208,7 +197,6 @@ class TasksContainer extends Component {
                 </div>
                 <div style={selectDivStyle}>
                   <SelectField
-                    style={selectStyle}
                     value={this.state.label}
                     onChange={this.handleLabelChange} >
                     <MenuItem value="All" primaryText="All" />
